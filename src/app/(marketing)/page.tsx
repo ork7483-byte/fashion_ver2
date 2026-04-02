@@ -1,216 +1,122 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import BeforeAfterHover from '@/components/BeforeAfterHover';
-import PricingTable from '@/components/PricingTable';
-import CountUpAnimation from '@/components/CountUpAnimation';
-import SectionHeading from '@/components/SectionHeading';
-import { galleryItems, galleryCategories } from '@/data/mock/gallery';
-import { testimonials } from '@/data/mock/testimonials';
-import { appFeatures } from '@/data/mock/features';
 
-export default function LandingPage() {
-  const [galleryCat, setGalleryCat] = useState<string>('ALL');
-  const [testimonialIdx, setTestimonialIdx] = useState(0);
+const sections = [
+  {
+    label: 'Ver.1 — AI 패션 이미지 SaaS',
+    color: 'from-[#D4572A] to-[#BF4D24]',
+    links: [
+      { href: '/app/model-cut', name: '모델컷 변환' },
+      { href: '/app/fitting', name: '가상피팅' },
+      { href: '/app/video', name: '영상 변환' },
+      { href: '/app/product-cut', name: '연출컷 생성' },
+      { href: '/app/gallery', name: '내 갤러리' },
+      { href: '/pricing', name: '요금제' },
+    ],
+  },
+  {
+    label: 'Ver.3 — AI 쇼핑몰 빌더 (VisionShop)',
+    color: 'from-[#2C2825] to-[#3a3532]',
+    links: [
+      { href: '/ver3', name: '마케팅 랜딩' },
+      { href: '/ver3/pricing', name: '요금제' },
+    ],
+  },
+  {
+    label: '셀러 대시보드',
+    color: 'from-[#2E6B4F] to-[#1a4a35]',
+    links: [
+      { href: '/dashboard', name: '대시보드 홈' },
+      { href: '/dashboard/products', name: '상품 관리' },
+      { href: '/dashboard/products/new', name: '상품 등록 (AI 파이프라인)' },
+      { href: '/dashboard/orders', name: '주문 관리' },
+      { href: '/dashboard/ai-studio', name: 'AI 스튜디오' },
+      { href: '/dashboard/ai-studio/model-cut', name: 'AI 스튜디오 — 모델컷' },
+      { href: '/dashboard/ai-studio/fitting', name: 'AI 스튜디오 — 가상피팅' },
+      { href: '/dashboard/ai-studio/video', name: 'AI 스튜디오 — 영상' },
+      { href: '/dashboard/ai-studio/product-cut', name: 'AI 스튜디오 — 연출컷' },
+      { href: '/dashboard/design', name: '쇼핑몰 디자인' },
+      { href: '/dashboard/domain', name: '도메인 설정' },
+      { href: '/dashboard/analytics', name: '분석' },
+      { href: '/dashboard/settings', name: '설정' },
+      { href: '/dashboard/referral', name: '추천 프로그램' },
+    ],
+  },
+  {
+    label: '쇼핑몰 프론트 (MODERA 데모)',
+    color: 'from-[#3A6B96] to-[#1e4a6e]',
+    links: [
+      { href: '/shop/modera', name: '쇼핑몰 메인' },
+      { href: '/shop/modera/products', name: '상품 목록' },
+      { href: '/shop/modera/products/prod-1', name: '상품 상세 (오버사이즈 린넨 블라우스)' },
+      { href: '/shop/modera/products/prod-3', name: '상품 상세 (플리츠 롱 원피스)' },
+      { href: '/shop/modera/cart', name: '장바구니' },
+      { href: '/shop/modera/checkout', name: '결제' },
+    ],
+  },
+  {
+    label: '내부 허브',
+    color: 'from-[#8C857B] to-[#6B6560]',
+    links: [
+      { href: '/hub', name: '허브 홈' },
+      { href: '/hub/services', name: '서비스 관리' },
+      { href: '/hub/stack', name: '기술 스택' },
+    ],
+  },
+];
 
-  const filteredGallery = galleryCat === 'ALL' ? galleryItems : galleryItems.filter((g) => g.category === galleryCat);
-
+export default function HomePage() {
   return (
-    <div className="bg-[#F4F1EB]">
-      {/* Section 1: Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2C2825] via-[#3a3532] to-[#1a1816]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+    <div className="bg-[#F4F1EB] min-h-screen pt-24 pb-16 px-6">
+      <div className="max-w-[1120px] mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white border border-[#E2DDD4]">
             <div className="w-5 h-5 rounded-sm bg-[#D4572A] flex items-center justify-center">
-              <span className="text-white font-bold text-[10px]">S</span>
+              <span className="text-white font-bold text-[10px]">V</span>
             </div>
-            <span className="text-white/80 text-sm font-medium">SELECT AI</span>
+            <span className="text-[#2C2825] text-sm font-medium">비젼AI · 사이트맵</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-            모델 촬영 없이,<br />
-            <span className="text-[#D4572A]">AI로 10초</span>만에.
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#2C2825] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+            VisionAI Platform
           </h1>
-          <p className="text-lg text-white/70 mb-10 max-w-xl mx-auto">
-            제품 사진 한 장이면 스튜디오급 모델컷이 완성됩니다.<br />
-            동대문 셀러부터 자사몰까지, 촬영 비용을 90% 절감하세요.
-          </p>
-          <Link
-            href="/app/model-cut"
-            className="inline-block px-8 py-4 rounded-sm bg-[#D4572A] text-white text-lg font-semibold hover:bg-[#BF4D24] hover:-translate-y-0.5 transition-all duration-150"
-          >
-            무료로 3장 만들어보기
-          </Link>
-          <p className="text-white/40 text-sm mt-4">카드 등록 없이 바로 시작</p>
+          <p className="text-[#8C857B] text-base">전체 서비스 페이지 바로가기</p>
         </div>
-      </section>
 
-      {/* Section 2: Before/After Gallery */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeading
-            label="Before & After"
-            title="호버하면 AI 모델컷으로 전환"
-            description="제품 사진 위에 마우스를 올려보세요"
-          />
-          <div className="flex justify-center gap-2 mb-8">
-            {galleryCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setGalleryCat(cat)}
-                className={`px-4 py-2 rounded-sm text-sm font-medium transition-all ${
-                  galleryCat === cat ? 'bg-[#D4572A] text-white' : 'bg-white text-[#8C857B] border border-[#E2DDD4] hover:text-[#2C2825]'
-                }`}
-              >
-                {cat === 'ALL' ? '전체' : cat}
-              </button>
-            ))}
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {filteredGallery.map((item, i) => (
-              <BeforeAfterHover key={i} {...item} />
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/app/model-cut" className="inline-block px-6 py-3 rounded-sm bg-[#D4572A] text-white text-sm font-semibold hover:bg-[#BF4D24] transition-colors">
-              나도 만들어보기
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Features */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <SectionHeading label="핵심 기능" title="AI가 할 수 있는 4가지" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {appFeatures.map((f) => (
-              <div key={f.title} className="p-6 rounded-sm border border-[#E2DDD4] bg-[#F4F1EB] hover:-translate-y-0.5 transition-transform duration-150">
-                <span className="text-3xl mb-4 block">{f.icon}</span>
-                <h3 className="text-lg font-bold text-[#2C2825] mb-2">{f.title}</h3>
-                <p className="text-sm text-[#8C857B] leading-relaxed">{f.description}</p>
+        {/* Sections */}
+        <div className="space-y-8">
+          {sections.map((section) => (
+            <div key={section.label} className="bg-white rounded-sm border border-[#E2DDD4] overflow-hidden">
+              {/* Section Header */}
+              <div className={`bg-gradient-to-r ${section.color} px-6 py-4`}>
+                <h2 className="text-white font-semibold text-sm">{section.label}</h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: How It Works */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeading label="작동 방식" title="3단계, 10초면 완성" />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              { step: '01', title: '사진 업로드', desc: '제품 사진을 드래그앤드롭', time: '2초' },
-              { step: '02', title: 'AI 생성', desc: '모델, 포즈, 배경을 선택하고 생성', time: '3초' },
-              { step: '03', title: '완성!', desc: '스튜디오급 모델컷 다운로드', time: '5초' },
-            ].map((s) => (
-              <div key={s.step} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-white border border-[#E2DDD4] flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold text-[#D4572A]" style={{ fontFamily: "'Playfair Display', serif" }}>{s.step}</span>
-                </div>
-                <h3 className="text-base font-bold text-[#2C2825] mb-1">{s.title}</h3>
-                <p className="text-sm text-[#8C857B] mb-2">{s.desc}</p>
-                <span className="text-xs font-mono text-[#D4572A]">{s.time}</span>
+              {/* Links Grid */}
+              <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {section.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-3 px-4 py-3 rounded-sm border border-[#E2DDD4] hover:border-[#D4572A] hover:bg-[#FDF5F2] hover:-translate-y-0.5 transition-all duration-150 group"
+                  >
+                    <svg className="w-4 h-4 text-[#B5AFA6] group-hover:text-[#D4572A] transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-[#2C2825] truncate">{link.name}</p>
+                      <p className="text-[11px] text-[#B5AFA6] truncate" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{link.href}</p>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: Result Gallery */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeading label="결과물" title="AI가 만든 모델컷 갤러리" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="aspect-[3/4] rounded-sm bg-gradient-to-br from-[#D4572A]/40 to-[#BF4D24]/60 border border-[#E2DDD4] flex items-center justify-center">
-                <span className="text-white/60 text-xs font-medium">결과물 {i + 1}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: Social Proof */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionHeading label="사회적 증거" title="셀러들이 인정한 결과" />
-          <div className="grid grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <CountUpAnimation end={1200} suffix="+" />
-              <p className="text-sm text-[#8C857B] mt-2">셀러 사용 중</p>
             </div>
-            <div className="text-center">
-              <CountUpAnimation end={50000} suffix="+" />
-              <p className="text-sm text-[#8C857B] mt-2">이미지 생성</p>
-            </div>
-            <div className="text-center">
-              <CountUpAnimation end={98} suffix="%" />
-              <p className="text-sm text-[#8C857B] mt-2">만족도</p>
-            </div>
-          </div>
-
-          {/* Testimonials */}
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-sm border border-[#E2DDD4] p-8 text-center">
-              <p className="text-base text-[#2C2825] leading-relaxed mb-6">
-                &ldquo;{testimonials[testimonialIdx].quote}&rdquo;
-              </p>
-              <p className="text-sm font-semibold text-[#2C2825]">{testimonials[testimonialIdx].author}</p>
-              <p className="text-xs text-[#8C857B]">{testimonials[testimonialIdx].role}</p>
-            </div>
-            <div className="flex justify-center gap-2 mt-4">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTestimonialIdx(i)}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === testimonialIdx ? 'bg-[#D4572A]' : 'bg-[#E2DDD4]'}`}
-                />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
 
-      {/* Section 7: Pricing */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <SectionHeading label="요금제" title="합리적인 가격, 무제한 가능성" />
-          <PricingTable />
+        {/* Footer */}
+        <div className="mt-16 text-center">
+          <p className="text-xs text-[#B5AFA6]">&copy; 2026 비젼AI. All rights reserved.</p>
         </div>
-      </section>
-
-      {/* Section 8: Final CTA */}
-      <section className="py-24 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#2C2825] mb-4">
-            지금 무료로 3장 만들어보세요
-          </h2>
-          <p className="text-[#8C857B] mb-8">카드 등록 없이 바로 시작</p>
-          <Link
-            href="/app/model-cut"
-            className="inline-block px-10 py-4 rounded-sm bg-[#D4572A] text-white text-lg font-semibold hover:bg-[#BF4D24] hover:-translate-y-0.5 transition-all duration-150 mb-6"
-          >
-            무료로 시작하기
-          </Link>
-          <div className="mt-8 pt-8 border-t border-[#E2DDD4]">
-            <p className="text-sm text-[#8C857B] mb-3">궁금한 점이 있으신가요?</p>
-            <button className="px-6 py-3 rounded-sm bg-[#F9E000] text-[#2C2825] text-sm font-semibold hover:-translate-y-0.5 transition-transform">
-              카카오톡으로 문의하기
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-[#E2DDD4]">
-        <div className="max-w-5xl mx-auto text-center text-xs text-[#B5AFA6]">
-          &copy; 2026 SELECT AI by 비젼AI. All rights reserved.
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }
