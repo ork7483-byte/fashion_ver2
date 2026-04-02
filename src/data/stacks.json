@@ -1,0 +1,107 @@
+[
+  {
+    "id": "flux",
+    "name": "Flux Dev",
+    "category": "이미지 생성",
+    "currentVersion": "v2.1",
+    "lastUpdated": "2026-03-28",
+    "description": "텍스트-투-이미지 생성 모델. 패션 모델컷, 상품 연출컷 생성에 핵심적으로 사용.",
+    "versions": [
+      { "version": "v2.1", "date": "2026-03-28", "note": "모델컷 품질 개선" },
+      { "version": "v2.0", "date": "2026-02-15", "note": "속도 2배 향상" },
+      { "version": "v1.0", "date": "2026-01-10", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "fashion", "usage": "모델컷 생성" },
+      { "service": "beauty", "usage": "헤어 스타일 생성" },
+      { "service": "detail-page", "usage": "상품 이미지 생성" }
+    ],
+    "memo": "LoRA 3.0과 함께 사용 시 최적 결과. 식품 카테고리 적용 시 프롬프트 조정 필요"
+  },
+  {
+    "id": "comfyui",
+    "name": "ComfyUI",
+    "category": "워크플로우",
+    "currentVersion": "v1.3",
+    "lastUpdated": "2026-03-15",
+    "description": "노드 기반 이미지 생성 파이프라인. 복잡한 워크플로우를 시각적으로 구성.",
+    "versions": [
+      { "version": "v1.3", "date": "2026-03-15", "note": "커스텀 노드 패키지 추가" },
+      { "version": "v1.0", "date": "2026-01-20", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "fashion", "usage": "모델컷 파이프라인" },
+      { "service": "beauty", "usage": "헤어 합성 워크플로우" },
+      { "service": "detail-page", "usage": "이미지 생성 자동화" }
+    ],
+    "memo": "Flux + LoRA 조합 워크플로우 템플릿 관리"
+  },
+  {
+    "id": "lora",
+    "name": "LoRA 학습",
+    "category": "모델 학습",
+    "currentVersion": "v3.0",
+    "lastUpdated": "2026-03-20",
+    "description": "커스텀 모델 파인튜닝. 업종별 특화 모델 학습에 사용.",
+    "versions": [
+      { "version": "v3.0", "date": "2026-03-20", "note": "학습 파이프라인 자동화" },
+      { "version": "v2.0", "date": "2026-02-01", "note": "품질 안정화" },
+      { "version": "v1.0", "date": "2026-01-15", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "fashion", "usage": "패션 모델 특화 학습" },
+      { "service": "beauty", "usage": "헤어 스타일 특화 학습" }
+    ],
+    "memo": "Flux Dev v2.1과 호환. 학습 데이터 최소 20장 권장"
+  },
+  {
+    "id": "bg-remove",
+    "name": "배경 제거 엔진",
+    "category": "이미지 처리",
+    "currentVersion": "v1.0",
+    "lastUpdated": "2026-02-10",
+    "description": "상품 이미지 배경 자동 제거. 누끼 작업 자동화.",
+    "versions": [
+      { "version": "v1.0", "date": "2026-02-10", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "fashion", "usage": "상품 누끼" },
+      { "service": "food", "usage": "음식 이미지 배경 제거" },
+      { "service": "beauty", "usage": "모델 누끼" },
+      { "service": "detail-page", "usage": "상품 이미지 처리" }
+    ],
+    "memo": "정확도 95% 이상. 복잡한 배경에서도 안정적"
+  },
+  {
+    "id": "gpt",
+    "name": "GPT API",
+    "category": "텍스트 생성",
+    "currentVersion": "v4.0",
+    "lastUpdated": "2026-03-01",
+    "description": "상품 카피라이팅 및 상세설명 자동 생성.",
+    "versions": [
+      { "version": "v4.0", "date": "2026-03-01", "note": "GPT-4o 적용" },
+      { "version": "v3.5", "date": "2026-01-05", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "detail-page", "usage": "상품 카피라이팅" }
+    ],
+    "memo": "상세페이지 카피 생성 전용. 프롬프트 템플릿 관리 필요"
+  },
+  {
+    "id": "template-engine",
+    "name": "템플릿 엔진",
+    "category": "레이아웃",
+    "currentVersion": "v1.2",
+    "lastUpdated": "2026-03-25",
+    "description": "상세페이지 HTML 레이아웃 자동 조립 엔진.",
+    "versions": [
+      { "version": "v1.2", "date": "2026-03-25", "note": "새 템플릿 5종 추가" },
+      { "version": "v1.0", "date": "2026-02-20", "note": "초기 도입" }
+    ],
+    "usedIn": [
+      { "service": "detail-page", "usage": "레이아웃 자동 조립" }
+    ],
+    "memo": "HTML→이미지 변환 포함. 쿠팡/스마트스토어 규격 지원"
+  }
+]

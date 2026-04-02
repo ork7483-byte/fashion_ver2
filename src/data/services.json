@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "fashion",
+    "name": "패션/의류 AI 모델",
+    "description": "AI가 생성한 패션 모델 이미지로 의류 셀러의 촬영 비용을 제거합니다",
+    "shortDescription": "AI 모델 이미지로 촬영 비용 제거",
+    "status": "운영 중",
+    "statusColor": "green",
+    "target": "동대문 셀러, 인스타 쇼핑몰, 자사몰 운영자",
+    "features": ["AI 모델컷", "착장 합성", "체형별 시뮬레이션"],
+    "externalUrl": "#",
+    "thumbnail": "/images/services/fashion.jpg",
+    "gallery": [
+      { "src": "/images/fashion/01.jpg", "title": "AI 모델컷 샘플", "tag": "모델컷" },
+      { "src": "/images/fashion/02.jpg", "title": "상품 누끼", "tag": "누끼" },
+      { "src": "/images/fashion/03.jpg", "title": "연출컷 샘플", "tag": "연출컷" },
+      { "src": "/images/fashion/04.jpg", "title": "체형 시뮬레이션", "tag": "모델컷" }
+    ],
+    "stacks": ["flux", "comfyui", "lora"]
+  },
+  {
+    "slug": "food",
+    "name": "식품/요식업 메뉴 사진",
+    "description": "음식 사진 AI 보정 및 메뉴 이미지 자동 생성으로 배달앱 전환율을 향상시킵니다",
+    "shortDescription": "메뉴 사진 AI 보정으로 배달앱 전환율 향상",
+    "status": "준비 중",
+    "statusColor": "gray",
+    "target": "자영업자, 배달앱 입점 식당",
+    "features": ["음식 사진 보정", "메뉴판 이미지 생성", "배달앱 최적화"],
+    "externalUrl": "#",
+    "thumbnail": "/images/services/food.jpg",
+    "gallery": [
+      { "src": "/images/food/01.jpg", "title": "음식 보정 샘플", "tag": "보정" },
+      { "src": "/images/food/02.jpg", "title": "메뉴판 자동 생성", "tag": "메뉴판" },
+      { "src": "/images/food/03.jpg", "title": "연출 사진", "tag": "연출" }
+    ],
+    "stacks": ["flux", "bg-remove"]
+  },
+  {
+    "slug": "beauty",
+    "name": "뷰티/헤어 모델",
+    "description": "AI 헤어 모델로 미용실 포트폴리오를 자동화합니다",
+    "shortDescription": "AI 헤어 모델로 미용실 포트폴리오 자동화",
+    "status": "준비 중",
+    "statusColor": "gray",
+    "target": "미용실, 뷰티 샵",
+    "features": ["AI 헤어 모델 생성", "시술 비포-애프터", "스타일 시뮬레이션"],
+    "externalUrl": "#",
+    "thumbnail": "/images/services/beauty.jpg",
+    "gallery": [
+      { "src": "/images/beauty/01.jpg", "title": "AI 헤어모델", "tag": "헤어모델" },
+      { "src": "/images/beauty/02.jpg", "title": "비포/애프터", "tag": "비포애프터" },
+      { "src": "/images/beauty/03.jpg", "title": "스타일 시뮬레이션", "tag": "스타일" }
+    ],
+    "stacks": ["flux", "comfyui", "lora"]
+  },
+  {
+    "slug": "detail-page",
+    "name": "상세페이지 자동화",
+    "description": "사진 한 장으로 상세페이지를 3분 만에 완성합니다",
+    "shortDescription": "사진 한 장으로 상세페이지 3분 완성",
+    "status": "개발 중",
+    "statusColor": "yellow",
+    "target": "이커머스 셀러 전체",
+    "features": ["AI 이미지 생성", "카피라이팅", "레이아웃 자동 조립"],
+    "externalUrl": "#",
+    "thumbnail": "/images/services/detail-page.jpg",
+    "gallery": [
+      { "src": "/images/detail-page/01.jpg", "title": "레이아웃 자동 생성", "tag": "레이아웃" },
+      { "src": "/images/detail-page/02.jpg", "title": "AI 카피라이팅", "tag": "카피" },
+      { "src": "/images/detail-page/03.jpg", "title": "최종 완성본", "tag": "완성본" }
+    ],
+    "stacks": ["flux", "comfyui", "gpt", "template-engine"]
+  }
+]
