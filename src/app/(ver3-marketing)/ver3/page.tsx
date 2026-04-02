@@ -60,10 +60,11 @@ const testimonials = [
 ];
 
 const enterpriseFeatures = [
-  '브랜드 맞춤 디자인 (컬러·폰트·레이아웃 전용 설계)',
-  'AI 모델 커스텀 학습 (자사 모델·체형 특화 파인튜닝)',
+  '브랜드 맞춤 디자인 (전용 테마 · 컬러 · 폰트 · 레이아웃 설계)',
+  'AI 모델 커스텀 학습 (브랜드 전용 모델 · 체형 특화 파인튜닝)',
   '기존 쇼핑몰 데이터 마이그레이션 지원',
-  '오픈 후 3개월 전담 운영 지원',
+  '전담 매니저 배정 — 기획부터 런칭까지 동행',
+  '런칭 후 3개월 운영 지원 → 이후 엔터프라이즈 플랜 유지보수',
 ];
 
 // ─── Hero Demo Card ───────────────────────────────────────────────────────────
@@ -396,9 +397,12 @@ export default function Ver3LandingPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-[#2C2825] mb-4">
               브랜드 맞춤 구축이 필요하신가요?
             </h2>
-            <p className="text-[#8C857B] mb-10">
-              일반 플랜으로 해결하기 어려운 규모 · 요구사항이라면<br />
-              전담팀이 처음부터 함께 설계해 드립니다.
+            <p className="text-[#8C857B] mb-3">
+              대규모 브랜드를 위한 프리미엄 구축 서비스
+            </p>
+            <p className="text-sm text-[#8C857B] mb-10">
+              전담 매니저가 브랜드에 맞는 AI 쇼핑몰을 구축해드립니다.<br />
+              초기 구축비 500~2,000만원 · 월 유지보수 엔터프라이즈 플랜
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 text-left">
               {enterpriseFeatures.map((feat) => (
@@ -410,15 +414,20 @@ export default function Ver3LandingPage() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-[#2C2825] text-white font-semibold hover:bg-[#3a3532] hover:-translate-y-0.5 transition-all duration-150"
-            >
-              문의하기
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-[#F9E000] text-[#2C2825] font-semibold hover:-translate-y-0.5 transition-all duration-150">
+                카카오톡으로 문의하기
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+              <Link
+                href="/ver3/pricing"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-[#EAE6DE] text-[#2C2825] font-semibold hover:bg-[#E2DDD4] hover:-translate-y-0.5 transition-all duration-150"
+              >
+                요금제 비교하기
+              </Link>
+            </div>
           </div>
         </div>
       </section>
