@@ -4,25 +4,27 @@ export function middleware(req: NextRequest) {
   const hostname = req.headers.get('host') || '';
   const subdomain = hostname.split('.')[0];
 
-  // 메인 도메인 → 마케팅 랜딩 (그대로 통과)
+  // Vercel 배포 도메인, localhost, 메인 도메인 → 그대로 통과
   if (
+    hostname.includes('vercel.app') ||
+    hostname.startsWith('localhost') ||
+    hostname.startsWith('127.0.0.1') ||
     subdomain === 'www' ||
     subdomain === 'visionshop' ||
-    hostname.startsWith('localhost') ||
-    hostname.startsWith('127.0.0.1')
+    subdomain === 'dashboard'
   ) {
     return NextResponse.next();
   }
 
-  // dashboard → 셀러 대시보드 (그대로 통과)
-  if (subdomain === 'dashboard') {
-    return NextResponse.next();
+  // *.visionshop.kr 서브도메인만 → 쇼핑몰 프론트 rewrite
+  if (hostname.endsWith('.visionshop.kr')) {
+    const url = req.nextUrl.clone();
+    url.pathname = `/shop/${subdomain}${url.pathname}`;
+    return NextResponse.rewrite(url);
   }
 
-  // 그 외 서브도메인 → 쇼핑몰 프론트 ({shop}.visionshop.kr)
-  const url = req.nextUrl.clone();
-  url.pathname = `/shop/${subdomain}${url.pathname}`;
-  return NextResponse.rewrite(url);
+  // 그 외 도메인 → 그대로 통과
+  return NextResponse.next();
 }
 
 export const config = {
